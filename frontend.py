@@ -1,5 +1,6 @@
 import streamlit as st
 import openai
+from openai.error import OpenAIError
 
 openai.api_key = "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"
 
