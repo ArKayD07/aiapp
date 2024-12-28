@@ -10,12 +10,16 @@ def generate_chat_response(prompt):
             messages=[{"role": "user", "content": prompt}],
         )
         return response['choices'][0]['message']['content'].strip()
-
+   except Exception as e:
+        return f"Error: {e}"
+        
 def generate_dalle_image(prompt):
     try:
         response = openai.Image.create(prompt=prompt, n=1, size="1024x1024")
         image_url = response['data'][0]['url']
         return image_url
+    except Exception as e:
+        return f"Error: {e}"
 
 st.title("AI Chatbot & DALL-E Image Generator")
 st.sidebar.header("Choose an option")
