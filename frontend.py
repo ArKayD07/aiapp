@@ -1,14 +1,14 @@
 import streamlit as st
 import openai
 
-openai.api_key = "your-api-key"
+openai.api_key = "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"
 
 def generate_chat_response(prompt):
     try:
         response = openai.completions.create(
-            model="gpt-4",  # Specify the model (GPT-4 or GPT-3.5)
-            prompt=prompt,  # Directly use the prompt
-            max_tokens=150  # You can adjust the max tokens based on your needs
+            model="gpt-4", 
+            prompt=prompt, 
+            max_tokens=150  
         )
         return response['choices'][0]['text'].strip()
     except Exception as e:
