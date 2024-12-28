@@ -1,8 +1,6 @@
 import streamlit as st
 import openai
 
-openai.api_key = "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"
-
 def generate_chat_response(prompt):
     try:
         response = openai.completions.create(
@@ -19,7 +17,7 @@ def generate_dalle_image(prompt):
         response = openai.Image.create(
             prompt=prompt,
             n=1,
-            size="1024x1024"  # Or adjust the size as needed
+            size="1024x1024"
         )
         image_url = response['data'][0]['url']
         return image_url
