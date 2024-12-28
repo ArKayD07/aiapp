@@ -5,7 +5,7 @@ openai.api_key = "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"
 
 def generate_chat_response(prompt):
     try:
-        response = openai.chat_completions.create(
+        response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
         )
@@ -15,7 +15,7 @@ def generate_chat_response(prompt):
         
 def generate_dalle_image(prompt):
     try:
-        response = openai.ChatCompletion.create(prompt=prompt, n=1)
+        response = openai.Image.create(prompt=prompt, n=1)
         image_url = response['data'][0]['url']
         return image_url
     except Exception as e:
