@@ -5,10 +5,7 @@ openai.api_key = "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"
 
 def generate_chat_response(prompt):
     try:
-        response = openai.completions.create(
-            model="gpt-4",
-            messages=[{"role": "user", "content": prompt}],
-        )
+        response = openai.completions.create(model="gpt-4",messages=[{"role": "user", "content": prompt}])
         return response['choices'][0]['message']['content'].strip()
     except Exception as e:
         return f"Error: {e}"
