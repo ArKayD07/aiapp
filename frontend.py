@@ -15,7 +15,7 @@ def generate_chat_response(prompt):
         
 def generate_dalle_image(prompt):
     try:
-        response = openai.Image.create(prompt=prompt, n=1, size="1024x1024")
+        response = openai.ChatCompletion.create(prompt=prompt, n=1)
         image_url = response['data'][0]['url']
         return image_url
     except Exception as e:
