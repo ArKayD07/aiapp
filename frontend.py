@@ -10,7 +10,7 @@ def generate_chat_response(prompt):
             messages=[{"role": "user", "content": prompt}],
         )
         return response['choices'][0]['message']['content'].strip()
-   except Exception as e:
+    except Exception as e:
         return f"Error: {e}"
         
 def generate_dalle_image(prompt):
