@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 
 client = OpenAI(
-  api_key=os.environ['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'], 
+  api_key=os.environ['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']
 )
 
 def generate_chat_response(prompt):
