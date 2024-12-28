@@ -1,18 +1,26 @@
 import streamlit as st
 import openai
 
-openai.api_key = "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"
+openai.api_key = "your-api-key"
 
 def generate_chat_response(prompt):
     try:
-        response = openai.ChatCompletion.create(model="gpt-4",messages=[{"role": "user", "content": prompt}])
-        return response['choices'][0]['message']['content'].strip()
+        response = openai.completions.create(
+            model="gpt-4",  # Specify the model (GPT-4 or GPT-3.5)
+            prompt=prompt,  # Directly use the prompt
+            max_tokens=150  # You can adjust the max tokens based on your needs
+        )
+        return response['choices'][0]['text'].strip()
     except Exception as e:
         return f"Error: {e}"
-        
+
 def generate_dalle_image(prompt):
     try:
-        response = openai.Image.create(prompt=prompt, n=1)
+        response = openai.Image.create(
+            prompt=prompt,
+            n=1,
+            size="1024x1024"  # Or adjust the size as needed
+        )
         image_url = response['data'][0]['url']
         return image_url
     except Exception as e:
