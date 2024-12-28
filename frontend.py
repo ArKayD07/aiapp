@@ -1,6 +1,5 @@
 import streamlit as st
 import openai
-from openai.error import OpenAIError
 
 openai.api_key = "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"
 
@@ -11,18 +10,12 @@ def generate_chat_response(prompt):
             messages=[{"role": "user", "content": prompt}],
         )
         return response['choices'][0]['message']['content'].strip()
-    except Exception as e:
-        return f"Error: {e}"
 
 def generate_dalle_image(prompt):
     try:
         response = openai.Image.create(prompt=prompt, n=1, size="1024x1024")
         image_url = response['data'][0]['url']
         return image_url
-
-    except openai.error.OpenAIError as e:
-        print(f"Error: {e}")
-        return None
 
 st.title("AI Chatbot & DALL-E Image Generator")
 st.sidebar.header("Choose an option")
