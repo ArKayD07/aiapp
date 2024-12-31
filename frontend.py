@@ -4,7 +4,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 def generate_chat_response(prompt):
     try:
